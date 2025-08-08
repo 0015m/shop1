@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سبد خرید</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://v1.fontapi.ir/css/Vazir" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <!-- همان هدر صفحه اصلی -->
+    </header>
+
+    <section class="cart">
+        <div class="container">
+            <h2>سبد خرید</h2>
+            <div id="cart-items"></div>
+            <h3>مجموع: <span id="cart-total">0 تومان</span></h3>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>تمامی حقوق برای فروشگاه محفوظ است © 1404</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script>
+        // نمایش اقلام سبد خرید
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <p>${item.name}</p>
+                        <p>${item.price.toLocaleString()} تومان</p>
+                        <button onclick="removeFromCart(${index})">حذف</button>
+                    </div>
+                `;
+            });
+            cartTotal.textContent = total.toLocaleString() + ' تومان';
+        }
+
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+            updateCartCount();
+        }
+
+        displayCart();
+    </script>
+</body>
+</html>

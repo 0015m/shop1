@@ -1,48 +1,75 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>فروشگاه آنلاین</title>
+    <title>فروشگاه آنلاین - شبیه دیجی‌کالا</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://v1.fontapi.ir/css/Vazir" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav">
-            <img src="img/logo.png" class="brand-logo" alt="لوگو">
-            <div class="nav-items">
-                <div class="search">
-                    <input type="text" class="search-box" placeholder="جستجوی محصول">
-                    <button class="search-btn">جستجو</button>
+    <!-- هدر -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <img src="img/logo.png" alt="لوگو" class="logo">
+                <div class="search-bar">
+                    <input type="text" id="search-input" placeholder="جستجو در محصولات...">
+                    <button onclick="searchProducts()">جستجو</button>
                 </div>
-                <a href="cart.html"><img src="img/cart.png" alt="سبد خرید"></a>
+                <a href="cart.html" class="cart-icon">
+                    <img src="img/cart.png" alt="سبد خرید">
+                    <span id="cart-count">0</span>
+                </a>
             </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="index.html">خانه</a></li>
+                    <li><a href="products.html">محصولات</a></li>
+                    <li><a href="#">دسته‌بندی‌ها</a>
+                        <ul class="dropdown">
+                            <li><a href="#">موبایل</a></li>
+                            <li><a href="#">لپ‌تاپ</a></li>
+                            <li><a href="#">لوازم خانگی</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
         </div>
-        <ul class="links-container">
-            <li class="link-item"><a href="index.html" class="link">خانه</a></li>
-            <li class="link-item"><a href="products.html" class="link">محصولات</a></li>
-        </ul>
-    </nav>
+    </header>
 
-    <section class="product">
-        <h2 class="product-category">محصولات پرفروش</h2>
-        <div class="product-container">
-            <div class="product-card">
-                <div class="product-image">
-                    <span class="discount-tag">50% تخفیف</span>
-                    <img src="img/product1.png" class="product-thumb" alt="محصول 1">
-                    <button class="card-btn">افزودن به سبد</button>
+    <!-- بنر تبلیغاتی -->
+    <section class="banner">
+        <img src="img/banner.jpg" alt="بنر تبلیغاتی" class="banner-img">
+    </section>
+
+    <!-- محصولات ویژه -->
+    <section class="products">
+        <div class="container">
+            <h2>محصولات ویژه</h2>
+            <div class="product-grid">
+                <div class="product-card">
+                    <img src="img/product1.jpg" alt="محصول 1">
+                    <h3>گوشی موبایل سامسونگ</h3>
+                    <p class="price">12,000,000 تومان</p>
+                    <button onclick="addToCart('گوشی موبایل سامسونگ', 12000000)">افزودن به سبد</button>
                 </div>
-                <div class="product-info">
-                    <h2 class="product-brand">برند</h2>
-                    <p class="product-short-des">توضیح مختصر محصول</p>
-                    <span class="price">200,000 تومان</span>
-                    <span class="actual-price">400,000 تومان</span>
+                <div class="product-card">
+                    <img src="img/product2.jpg" alt="محصول 2">
+                    <h3>لپ‌تاپ لنوو</h3>
+                    <p class="price">25,000,000 تومان</p>
+                    <button onclick="addToCart('لپ‌تاپ لنوو', 25000000)">افزودن به سبد</button>
                 </div>
+                <!-- محصولات دیگر -->
             </div>
-            <!-- کارت‌های محصول دیگر -->
         </div>
     </section>
+
+    <footer>
+        <div class="container">
+            <p>تمامی حقوق برای فروشگاه محفوظ است © 1404</p>
+        </div>
+    </footer>
 
     <script src="js/script.js"></script>
 </body>
